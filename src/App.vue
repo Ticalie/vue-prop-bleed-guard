@@ -56,7 +56,10 @@
       </button>
       <pre>{{ `<TotallyPropGuard label="Wat" @click="sayBleed" />` }}</pre>
       <TotallyPropGuard v-if="showGuardError" label="This one should error" v-bind="guardErrorAttrs"></TotallyPropGuard>
-      <small>Expected: only `@say-hi` is part of the public contract.</small>
+      <small>
+        Expected: only `@say-hi` is part of the public contract. Toggle the invalid example, then
+       <strong>check the browser console</strong> for the guard error.
+      </small>
     </section>
   </main>
 </template>
