@@ -17,7 +17,9 @@
       <ul>
         <li>Flags unsupported listeners/attrs (for example, `@click` on `TotallyPropGuard`).</li>
         <li>Makes the `defineProps` / `defineEmits` contract visible directly in the template.</li>
-        <li>Combines with runtime guards like `useStrictAttrs` so you get editor + runtime safety.</li>
+        <li>
+          Combines with runtime guards like `useStrictAttrs` so you get editor + runtime safety.
+        </li>
       </ul>
     </section>
 
@@ -55,10 +57,14 @@
         {{ showGuardError ? 'Hide' : 'Show' }} invalid attrs example
       </button>
       <pre>{{ `<TotallyPropGuard label="Wat" @click="sayBleed" />` }}</pre>
-      <TotallyPropGuard v-if="showGuardError" label="This one should error" v-bind="guardErrorAttrs"></TotallyPropGuard>
+      <TotallyPropGuard
+        v-if="showGuardError"
+        label="This one should not render"
+        v-bind="guardErrorAttrs"
+      ></TotallyPropGuard>
       <small>
         Expected: only `@say-hi` is part of the public contract. Toggle the invalid example, then
-       <strong>check the browser console</strong> for the guard error.
+        <strong>check the browser console</strong> for the guard error.
       </small>
     </section>
   </main>
@@ -80,8 +86,8 @@ const sayBleed = (): void => {
   alert('I bleed')
 }
 
-const bleedClickAttrs = { onClick: sayBleed };
-const guardErrorAttrs = { onClick: sayBleed };
+const bleedClickAttrs = { onClick: sayBleed }
+const guardErrorAttrs = { onClick: sayBleed }
 </script>
 
 <style scoped>
